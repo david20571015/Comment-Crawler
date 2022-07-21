@@ -55,7 +55,7 @@ def crawl_fb_comments(
 
     comment_elements = driver.find_elements(
         By.CSS_SELECTOR, 'div.UFIImageBlockContent.clearfix span._5mdd')
-    comments = [ele.text for ele in comment_elements]
+    comments = [ele.get_attribute('innerText') for ele in comment_elements]
     logging.info('Crawled %d comments from facebook.', len(comments))
 
     driver.close()

@@ -106,8 +106,3 @@ output:
    [reference](https://stackoverflow.com/questions/72719298/selenium-for-chrome-version-103-is-just-crashing-i-know-its-not-my-code-becaus)
 
    - You can waiting for Chrome 104 or try other browser or driver.
-
-2. It only crawls a part of Facebook comments and leave the rest empty.
-   ![bug](images/bug.png)
-
-   - I'm fixing this issue now.
