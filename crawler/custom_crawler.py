@@ -72,7 +72,7 @@ class EtTodayCrawler(Crawler):
             comment_url = comment_iframe.get_attribute('src')
             comments.extend(crawl_fb_comments(comment_url, driver, size))
         except TimeoutException as err:
-            print(err)
+            logging.error(err)
 
         try:
             comment_iframe = self._find_ettoday_comments_iframe(driver)
@@ -80,7 +80,7 @@ class EtTodayCrawler(Crawler):
             comments.extend(
                 self._crawl_ettoday_comments(comment_url, driver, size))
         except TimeoutException as err:
-            print(err)
+            logging.error(err)
 
         driver.quit()
 
@@ -129,18 +129,12 @@ class UdnCrawler(Crawler):
         Returns:
             A list of comments.
         """
-        # driver.switch_to.new_window('tab')
-        # logging.info('Crawling comments from %s.', comment_url)
-        # driver.get(comment_url)
 
         comment_elements = driver.find_elements(
             By.CSS_SELECTOR,
             'section.discuss-board.article-section.context-box p')
         comments = [ele.text for ele in comment_elements]
         logging.info('Crawled %d comments from udn.', len(comments))
-
-        # driver.close()
-        # driver.switch_to.window(driver.window_handles[0])
 
         return comments[:size]
 
@@ -164,7 +158,7 @@ class UdnCrawler(Crawler):
             comment_url = comment_iframe.get_attribute('src')
             comments.extend(crawl_fb_comments(comment_url, driver, size))
         except TimeoutException as err:
-            print(err)
+            logging.error(err)
 
         comments.extend(self._crawl_udn_comments(driver, size))
 

@@ -100,7 +100,7 @@ class Crawler():
         try:
             comment_iframe = self._find_fb_comments_iframe(driver)
         except TimeoutException as err:
-            print(err)
+            logging.error(err)
             return []
 
         comment_url = comment_iframe.get_attribute('src')
