@@ -22,7 +22,15 @@ def init_driver(chrome_version: str = '103.0.5060.53') -> WebDriver:
         A webdriver.
     """
     driver_manager = ChromeDriverManager(version=chrome_version)
-    driver = webdriver.Chrome(service=Service(driver_manager.install()))
+
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--disable-notifications')
+
+    driver = webdriver.Chrome(
+        service=Service(driver_manager.install()),
+        options=chrome_options,
+    )
+
     return driver
 
 
