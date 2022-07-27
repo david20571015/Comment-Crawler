@@ -12,7 +12,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 
 
-def init_driver(chrome_version: str = '103.0.5060.53') -> WebDriver:
+def init_driver(chrome_version: str = '103.0.5060.134') -> WebDriver:
     """Initializes a webdriver.
 
     Args:
